@@ -1,5 +1,5 @@
-Nama    : Refiany Shadrina
-NPM     : 2106650185
+Nama    : Refiany Shadrina,
+NPM     : 2106650185,
 Kelas   : PBP - F
 
 1. Bagan :
