@@ -7,5 +7,6 @@ def takeData(request):
 data_katalog = CatalogItem.objects.all()
 context = {
     'list_katalog': data_katalog,
-    'nama': 'Refiany Shadrina'
+    'nama': 'Refiany Shadrina',
+    'npm' : 2106650185
 }
