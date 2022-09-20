@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>Watch List</h1>
+
+  <table>
+    <tr>
+      <th>Watched</th>
+      <th>Title</th>
+      <th>Rating</th>
+      <th>Release Date</th>
+      <th>Review</th>
+    </tr>
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for watchlist in watchlist_data %}
+    <tr>
+      <th>{{ watchlist.watched }}</th>
+      <th>{{ watchlist.title }}</th>
+      <th>{{ watchlist.rating }}</th>
+      <th>{{ watchlist.release_date }}</th>
+      <th>{{ watchlist.review }}</th>
+    </tr>
+    {% endfor %}
+  </table>
+
+ {% endblock content %}

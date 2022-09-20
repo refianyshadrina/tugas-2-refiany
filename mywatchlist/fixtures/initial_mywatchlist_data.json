@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 1,
+        "fields": {
+            "watched": "True",
+            "title": "movie 1",
+            "rating": 5,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 2,
+        "fields": {
+            "watched": "False",
+            "title": "movie 2",
+            "rating": 5,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 3,
+        "fields": {
+            "watched": "True",
+            "title": "movie 3",
+            "rating": 5,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 4,
+        "fields": {
+            "watched": "False",
+            "title": "movie 4",
+            "rating": 5,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 5,
+        "fields": {
+            "watched": "True",
+            "title": "movie 5",
+            "rating": 5,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 6,
+        "fields": {
+            "watched": "True",
+            "title": "movie 6",
+            "rating": 1,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 7,
+        "fields": {
+            "watched": "False",
+            "title": "movie 7",
+            "rating": 1,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 8,
+        "fields": {
+            "watched": "False",
+            "title": "movie 8",
+            "rating": 1,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 9,
+        "fields": {
+            "watched": "False",
+            "title": "movie 9",
+            "rating": 1,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 10,
+        "fields": {
+            "watched": "False",
+            "title": "movie 10",
+            "rating": 1,
+            "release_date": "Jul 17, 2004",
+            "review": "mayan ktnya"
+        }
+    }
+]
