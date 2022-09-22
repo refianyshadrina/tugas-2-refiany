@@ -1,3 +1,14 @@
+LINK HEROKU
+
+https://refi-tugas-2-pbp.herokuapp.com/mywatchlist/
+
+https://refi-tugas-2-pbp.herokuapp.com/mywatchlist/html/
+
+https://refi-tugas-2-pbp.herokuapp.com/mywatchlist/json/
+
+https://refi-tugas-2-pbp.herokuapp.com/mywatchlist/xml/
+
+
 SCREENSHOTS POSTMAN
  
 -MyWatchList
