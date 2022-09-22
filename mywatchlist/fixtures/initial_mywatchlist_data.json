@@ -4,21 +4,21 @@
         "pk": 1,
         "fields": {
             "watched": "True",
-            "title": "movie 1",
-            "rating": 5,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "title": "tukang bubur naik haji",
+            "rating": 1,
+            "release_date": "2004-07-17",
+            "review": "Hmm..."
         }
     },
     {
         "model": "mywatchlist.watchlist",
         "pk": 2,
         "fields": {
-            "watched": "False",
-            "title": "movie 2",
-            "rating": 5,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "watched": "True",
+            "title": "ganteng ganteng serigala",
+            "rating": 2,
+            "release_date": "2004-07-18",
+            "review": "Hmm.. weird..."
         }
     },
     {
@@ -26,10 +26,10 @@
         "pk": 3,
         "fields": {
             "watched": "True",
-            "title": "movie 3",
+            "title": "spongebob squarepants",
             "rating": 5,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "release_date": "2004-07-17",
+            "review": "What a movie!!!!!!!!"
         }
     },
     {
@@ -37,10 +37,10 @@
         "pk": 4,
         "fields": {
             "watched": "False",
-            "title": "movie 4",
+            "title": "Orang tuaku ternyata pasutri",
             "rating": 5,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "release_date": "2004-07-17",
+            "review": "Hmm..."
         }
     },
     {
@@ -48,10 +48,10 @@
         "pk": 5,
         "fields": {
             "watched": "True",
-            "title": "movie 5",
+            "title": "spiderman",
             "rating": 5,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "release_date": "2004-07-17",
+            "review": "what a movie!"
         }
     },
     {
@@ -59,10 +59,10 @@
         "pk": 6,
         "fields": {
             "watched": "True",
-            "title": "movie 6",
+            "title": "babayoooo",
             "rating": 1,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "release_date": "2004-07-17",
+            "review": "Hmm.."
         }
     },
     {
@@ -70,10 +70,10 @@
         "pk": 7,
         "fields": {
             "watched": "False",
-            "title": "movie 7",
-            "rating": 1,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "title": "hacksaw ridge",
+            "rating": 4,
+            "release_date": "2004-07-17",
+            "review": "what a movie!"
         }
     },
     {
@@ -83,8 +83,8 @@
             "watched": "False",
             "title": "movie 8",
             "rating": 1,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "release_date": "2004-07-17",
+            "review": "Hmm.."
         }
     },
     {
@@ -94,8 +94,8 @@
             "watched": "False",
             "title": "movie 9",
             "rating": 1,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "release_date": "2004-07-17",
+            "review": "Hmm.."
         }
     },
     {
@@ -105,8 +105,8 @@
             "watched": "False",
             "title": "movie 10",
             "rating": 1,
-            "release_date": "Jul 17, 2004",
-            "review": "mayan ktnya"
+            "release_date": "2004-07-17",
+            "review": "Hmm.."
         }
     }
 ]
