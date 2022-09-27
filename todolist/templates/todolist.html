@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>Tugas 4 PBP</h1>
+
+  {% if user.is_authenticated %}
+    <h2>Selamat datang, {{ user.get_username }}!</h2>
+
+    <br>
+
+    <button><a href="{% url 'todolist:create_task' %}">Create Task</a></button>
+
+    <br>
+    <br>
+
+    <table>
+        <table border = "1" width = "70%">
+        <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date Added</th>
+        </tr>
+
+        {% for list in list_todo %}
+    <tr>
+        <th>{{list.title}}</th>
+        <th>{{list.description}}</th>
+        <th>{{list.date}}</th>
+    </tr>
+    {% endfor %}
+    </table>
+
+  {% endif %}
+<br>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}
