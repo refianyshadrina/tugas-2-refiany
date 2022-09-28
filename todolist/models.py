@@ -8,3 +8,4 @@ class Task(models.Model):
     date = models.TextField()
     title = models.CharField(max_length=255)
     description = models.TextField()
+    finished = models.BooleanField(default=False)

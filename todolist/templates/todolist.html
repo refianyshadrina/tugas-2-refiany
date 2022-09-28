@@ -15,11 +15,14 @@
     <br>
 
     <table>
-        <table border = "1" width = "70%">
+        <table border = "1" width = "75%">
         <tr>
         <th>Title</th>
         <th>Description</th>
         <th>Date Added</th>
+        <th>Status</th>
+        <th>Update Task</th>
+        <th>Delete</th>
         </tr>
 
         {% for list in list_todo %}
@@ -27,6 +30,19 @@
         <th>{{list.title}}</th>
         <th>{{list.description}}</th>
         <th>{{list.date}}</th>
+
+        {% if list.finished %}
+            <td>Selesai</td>
+        {% else %}
+            <td>Belum Selesai</td>
+        {% endif %}
+
+        <td>
+          <button><a href="{% url 'todolist:status' list.id %}">Change</a></button>
+        </td>
+        <td>
+          <button><a href="{% url 'todolist:delete' list.id %}">Delete</a></button>
+        </td>
     </tr>
     {% endfor %}
     </table>

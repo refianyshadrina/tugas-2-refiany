@@ -68,3 +68,16 @@ def create_task(request):
         
     context = {'form':form}
     return render(request, 'create-task.html', context)
+
+@login_required(login_url='/todolist/login/')
+def status(request, id):
+    task = Task.objects.get(id = id)
+    task.finished = not(task.finished)
+    task.save()
+    return redirect('todolist:show_todolist')
+
+@login_required(login_url='/todolist/login/')
+def delete(request, id):
+    task = Task.objects.get(id = id)
+    task.delete()
+    return redirect('todolist:show_todolist')
