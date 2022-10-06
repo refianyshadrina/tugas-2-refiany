@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block meta %}
@@ -6,29 +7,63 @@
 
 {% block content %}  
 
-<div class = "login">
-    
-    <h1>Formulir Registrasi</h1>  
-
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
-
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+    <style>
+      .background-radial-gradient {
+        background-color: hsl(73, 92%, 25%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(150, 13%, 42%) 15%,
+            hsl(145, 52%, 61%) 35%,
+            hsl(220, 22%, 52%) 75%,
+            hsl(147, 17%, 53%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(219, 41%, 13%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%);
+      }
+  
+      .bg-glass {
+        background-color: hsla(0, 0%, 100%, 0.9) !important;
+        backdrop-filter: saturate(200%) blur(25px);
+      }
+    </style>
+  
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+            Sign Up <br />
+            <span style="color: hsl(44, 81%, 75%)">for your everyday to-do list!</span>
+          </h1>
+          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+            Fakultas Ilmu Komputer
+            Universitas Indonesia
+          </p>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+  
+          <div class="card bg-glass">
+            <div class="card-body px-4 py-5 px-md-5">
+                <form method="POST" >  
+                    {% csrf_token %}  
+                    <table>  
+                        {{ form.as_table }}  
+                        <tr>  
+                            <td></td>
+                            <td><input type="submit" name="submit" value="SignUp"/></td>  
+                        </tr>  
+                    </table>  
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
 {% endblock content %}

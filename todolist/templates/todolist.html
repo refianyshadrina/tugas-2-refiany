@@ -1,54 +1,103 @@
+
 {% extends 'base.html' %}
 
  {% block content %}
+ <style>
+  .background-radial-gradient {
+        background-color: hsl(73, 88%, 76%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(56, 71%, 73%) 15%,
+            hsl(54, 52%, 61%) 35%,
+            hsl(46, 60%, 73%) 75%,
+            hsl(73, 66%, 66%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(61, 61%, 60%) 15%,
+            hsl(64, 39%, 72%) 35%,
+            hsl(46, 55%, 60%) 75%,
+            hsl(81, 100%, 75%) 80%,
+            transparent 100%);
+      }
+  .card {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 0px 20px 0 rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.2);
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+ }
+ .card:hover{
+    transform: scale(1.09);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+ section {
+        background-color:  hsl(73, 83%, 81%);
+      }
 
-  <h1>Tugas 4 PBP</h1>
+  body {
+    background-color: hsl(73, 83%, 81%);
+  } 
+  </style>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">TO DO LIST</span>
+      <a href="{% url 'todolist:logout' %}"><button class="btn btn-outline-light">Logout</button></a>
+  </div>
+</nav>
+
+<body>
+<section class="background-radial-gradient overflow-hidden">
 
   {% if user.is_authenticated %}
-    <h2>Selamat datang, {{ user.get_username }}!</h2>
+  <h1 class="text-center"></h1>
+
+  <h2 class="text-center">Welcome, {{ user.get_username }}!</h2>
+  
+  <div class="flex  justify-center justify-items-center h-fit mt-4 p-4">
+    <div class="grid lg:grid-cols-4 md:grid-cols-3 gap-5 mt-8 sm:mt-5">
+    <br>
+
+    <a href="{% url 'todolist:create_task' %}"><button class="btn btn-light btn-lg">Add To-do</button></a>
 
     <br>
 
-    <button><a href="{% url 'todolist:create_task' %}">Create Task</a></button>
-
-    <br>
     <br>
 
-    <table>
-        <table border = "1" width = "75%">
-        <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Date Added</th>
-        <th>Status</th>
-        <th>Update Task</th>
-        <th>Delete</th>
-        </tr>
-
+    <div class="row">
         {% for list in list_todo %}
     <tr>
-        <th>{{list.title}}</th>
-        <th>{{list.description}}</th>
-        <th>{{list.date}}</th>
-
-        {% if list.finished %}
-            <td>Selesai</td>
-        {% else %}
-            <td>Belum Selesai</td>
-        {% endif %}
-
-        <td>
-          <button><a href="{% url 'todolist:status' list.id %}">Change</a></button>
-        </td>
-        <td>
-          <button><a href="{% url 'todolist:delete' list.id %}">Delete</a></button>
-        </td>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{list.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{list.date}}</h6>
+          <p class="card-text">{{list.description}}</p>
+          {% if list.finished %} 
+            <h6 class="card-text text-success">Status: FINISHED</h6>
+            <a href="{% url 'todolist:delete' list.id %}"><button class="btn btn-outline-dark" >Delete</button></a>
+            <a href="{% url 'todolist:status' list.id %}"><button class="btn btn-outline-dark">Undo</button></a>
+          {% else %}
+            <h6 class="card-text text-danger">Status: ON PROGRESS</h6>
+            <a href="{% url 'todolist:delete' list.id %}"><button class="btn btn-outline-dark">Delete</button></a>
+            <a href="{% url 'todolist:status' list.id %}"><button class="btn btn-outline-dark">Mark as Done</button></a>
+          {% endif %}
+        </div>
+      </div>
+      
     </tr>
     {% endfor %}
-    </table>
-
-  {% endif %}
+    
+    {% endif %}
+  </div>
 <br>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+</div>
+</div>
+</section>
+</body>
 
 {% endblock content %}

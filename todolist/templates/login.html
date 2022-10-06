@@ -1,45 +1,96 @@
+
+
+
 {% extends 'base.html' %}
 
 {% block meta %}
-<title>Login</title>
+<title>Registrasi Akun</title>
 {% endblock meta %}
 
-{% block content %}
+{% block content %}  
 
-<div class = "login">
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+    <style>
+      .background-radial-gradient {
+        background-color: hsl(73, 92%, 25%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(150, 13%, 42%) 15%,
+            hsl(145, 52%, 61%) 35%,
+            hsl(220, 22%, 52%) 75%,
+            hsl(147, 17%, 53%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(219, 41%, 13%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%);
+      }
 
-    <h1>Login</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
-
-</div>
-
+      .card {
+        background-color: hsl(73, 83%, 81%);
+      }
+  
+      .bg-glass {
+        background-color: hsla(0, 0%, 100%, 0.9) !important;
+        backdrop-filter: saturate(200%) blur(25px);
+      }
+    </style>
+  
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+            Log In <br />
+            <span style="color: hsl(44, 81%, 75%)">for your everyday to-do list!</span>
+          </h1>
+          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+            Fakultas Ilmu Komputer
+            Universitas Indonesia
+          </p>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+  
+            <div class="card-body px-4 py-5 px-md-5">
+                <div class="card text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <h2 class="fw-bold mb-2 text-uppercase text-dark">Login First!</h2>
+                            <p class="mb-5 text-dark">Please enter your login and password</p>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <table>
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="text" id="typeUsername" name="username" placeholder="Username" class="form-control" />
+                                    </div>
+                                    
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="password" name="password" placeholder="Password" id="typePasswordX" class="form-control" />
+                                    </div>
+                                    <div class="text-dark">
+                                    {% if messages %}
+                                        <ul>
+                                            {% for message in messages %}
+                                                <li>{{ message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %} 
+                                    </div>
+                                    <button class="btn btn-outline-dark btn-lg px-5" type="submit" value="Login">Login</button>
+                                </table>
+                            </form>
+                            
+                        </div>
+                        <p class="mb-0 text-dark">Don't have an account? <a href="{% url 'todolist:register' %}" class="text-dark-50 fw-bold">Sign Up</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
 {% endblock content %}

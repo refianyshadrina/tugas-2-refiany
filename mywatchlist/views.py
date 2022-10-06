@@ -28,4 +28,3 @@ def show_byxml(request):
 def show_byjson(request):
     data = WatchList.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-
