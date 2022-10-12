@@ -1,6 +1,6 @@
 # Implement Routings Here
 from django.urls import path
-from todolist.views import show_todolist
+from todolist.views import add_task, show_json_by_id, show_todolist
 from todolist.views import register
 from todolist.views import login_user
 from todolist.views import logout_user
@@ -18,4 +18,6 @@ urlpatterns = [
     path('create-task/', create_task, name='create_task'),
     path('change/<int:id>', status, name='status'),
     path('delete/<int:id>', delete, name='delete'),
+    path('json/', show_json_by_id, name='show_json_by_id'),
+    path('add/', add_task, name='add_task'),
 ]

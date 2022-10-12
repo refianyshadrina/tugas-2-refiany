@@ -1,103 +1,168 @@
-
+ 
 {% extends 'base.html' %}
+ 
+{% block content %}
 
- {% block content %}
- <style>
-  .background-radial-gradient {
-        background-color: hsl(73, 88%, 76%);
-        background-image: radial-gradient(650px circle at 0% 0%,
-            hsl(56, 71%, 73%) 15%,
-            hsl(54, 52%, 61%) 35%,
-            hsl(46, 60%, 73%) 75%,
-            hsl(73, 66%, 66%) 80%,
-            transparent 100%),
-          radial-gradient(1250px circle at 100% 100%,
-            hsl(61, 61%, 60%) 15%,
-            hsl(64, 39%, 72%) 35%,
-            hsl(46, 55%, 60%) 75%,
-            hsl(81, 100%, 75%) 80%,
-            transparent 100%);
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+  $(document).ready(function(){
+      const card = (data) =>  
+        `<div id="${data.pk}-card" align="center">
+          <div class="card" style="width: 18rem;">
+               <div class="card-body">
+                 <h5 class="card-title">${data.fields.title}</h5>
+                 <h6 class="card-subtitle mb-2 text-muted">${data.fields.date}</h6>
+                 <p class="card-text">${data.fields.description}</p>
+                 ${data.fields.finished ?`<h6 class="card-text text-success">FINISHED</h6>
+                   <a href="/todolist/delete/${data.pk}"><button class="btn btn-outline-dark" >Delete</button></a>
+                   <a href="/todolist/change/${data.pk}"><button class="btn btn-outline-dark">Undo</button></a>`:
+                   `<h6 class="card-text text-danger">ON PROGRESS</h6>
+                   <a href="/todolist/delete/${data.pk}"><button class="btn btn-outline-dark">Delete</button></a>
+                   <a href="/todolist/change/${data.pk}"><button class="btn btn-outline-dark">Mark as Done</button></a>`
+               }
+               </div>
+             </div>
+           </div>`
+
+   const addCard = (data) => {
+        return $('#todo').append(card(data))
+    }
+
+    $.get('/todolist/json', function (todo) {
+        todo.map((task) => {
+          addCard(task)
+        })
+      })
+
+    $('#addTask').click(function() {
+      if ($('#title').val() && $('#description').val()) {
+        $.post(
+          '/todolist/add/',
+          {
+            title: $('#title').val(),
+            description: $('#description').val(),
+          },
+          function(res,status) {
+            if (status=='success') {
+              addCard(res)
+              $('#title').val('')
+              $('#description').val('')
+            }
+          }
+        )
+        return false;
       }
-  .card {
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0 0px 20px 0 rgba(0,0,0,0.2);
-    background-color: rgba(0,0,0,0.2);
-    transition: 0.3s;
-    cursor: pointer;
-    display: flex;
-    width: 100%;
-    margin-bottom: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
+    })
+  });
+</script>
+</head>
+
+
+<style>
+ .background-radial-gradient {
+       background-color: hsl(73, 88%, 76%);
+       background-image: radial-gradient(650px circle at 0% 0%,
+           hsl(56, 71%, 73%) 15%,
+           hsl(54, 52%, 61%) 35%,
+           hsl(46, 60%, 73%) 75%,
+           hsl(73, 66%, 66%) 80%,
+           transparent 100%),
+         radial-gradient(1250px circle at 100% 100%,
+           hsl(61, 61%, 60%) 15%,
+           hsl(64, 39%, 72%) 35%,
+           hsl(46, 55%, 60%) 75%,
+           hsl(81, 100%, 75%) 80%,
+           transparent 100%);
+     }
+ .card {
+   padding-left: 20px;
+   padding-right: 20px;
+   box-shadow: 0 0px 20px 0 rgba(0,0,0,0.2);
+   background-color: rgba(193, 230, 207, 0.699);
+   transition: 0.3s;
+   cursor: pointer;
+   display: flex;
+   width: 100%;
+   margin-bottom: 10px;
+   margin-top: 10px;
+   margin-left: 5px;
+   margin-right: 5px;
+}
+.card:hover{
+   transform: scale(1.09);
+   box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
  }
- .card:hover{
-    transform: scale(1.09);
-    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-  }
- section {
-        background-color:  hsl(73, 83%, 81%);
-      }
+ body {
+   background-color: hsl(73, 92%, 25%);
+       background-image: radial-gradient(650px circle at 0% 0%,
+           hsl(150, 13%, 42%) 15%,
+           hsl(145, 52%, 61%) 35%,
+           hsl(220, 22%, 52%) 75%,
+           hsl(147, 17%, 53%) 80%,
+           transparent 100%),
+         radial-gradient(1250px circle at 100% 100%,
+           hsl(218, 41%, 45%) 15%,
+           hsl(219, 41%, 13%) 35%,
+           hsl(218, 41%, 20%) 75%,
+           hsl(218, 41%, 19%) 80%,
+           transparent 100%);
+ }
+ </style>
 
-  body {
-    background-color: hsl(73, 83%, 81%);
-  } 
-  </style>
-
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">TO DO LIST</span>
-      <a href="{% url 'todolist:logout' %}"><button class="btn btn-outline-light">Logout</button></a>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <div class="container-fluid navbar-dark bg-dark">
+     <a class="navbar-brand navbar-dark bg-dark">Hello, {{user.get_username}}!</a>
+     <button class="navbar-toggler navbar-dark bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon navbar-dark bg-dark"></span>
+       </button>
+       <div class="collapse navbar-collapse navbar-dark bg-dark" id="navbarSupportedContent">
+           <ul class="navbar-nav">
+             <li class="nav-item active">
+               <a class="nav-link navbar-dark bg-dark cursor-pointer" data-bs-toggle="modal" data-bs-target="#createTaskModal">Add Task<span class="sr-only navbar-dark bg-dark"></span></a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link navbar-dark bg-dark" href="{% url 'todolist:logout' %}">Logout</a>
+             </li>
+           </ul>
+       </div>
+ </div>
 </nav>
 
-<body>
-<section class="background-radial-gradient overflow-hidden">
 
-  {% if user.is_authenticated %}
-  <h1 class="text-center"></h1>
+ <div class="modal fade" id="createTaskModal" tabindex="-1" role="dialog" aria-labelledby="createTaskModalLabel" aria-hidden="true">
+   <div class="modal-dialog bg-dark" role="document">
+     <div class="modal-content bg-dark">
+       <div class="modal-header">
+         <h5 class="modal-title text-white" id="createTaskModalLabel">Add Task</h5>
+       </div>
+       <div class="modal-body">
+        <form method="post">
+         {% csrf_token %}
+         
+        </form>
+         <label class="text-white font-bold">Title</label>
+         <input id="title"  type="title" name="title" placeholder="Task Title">
+         <label class="text-white font-bold">Description</label>
+         <input id="description"  type="description" name="description" placeholder="Task Description">
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+         <button id="addTask" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+       </div>
+        
+     </div>
+   </div>
+ </div>
 
-  <h2 class="text-center">Welcome, {{ user.get_username }}!</h2>
-  
-  <div class="flex  justify-center justify-items-center h-fit mt-4 p-4">
-    <div class="grid lg:grid-cols-4 md:grid-cols-3 gap-5 mt-8 sm:mt-5">
-    <br>
 
-    <a href="{% url 'todolist:create_task' %}"><button class="btn btn-light btn-lg">Add To-do</button></a>
+ <h2 class="text-center text-light"> </h2>
 
-    <br>
+ <div id="todo"></div>
 
-    <br>
-
-    <div class="row">
-        {% for list in list_todo %}
-    <tr>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{list.title}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{list.date}}</h6>
-          <p class="card-text">{{list.description}}</p>
-          {% if list.finished %} 
-            <h6 class="card-text text-success">Status: FINISHED</h6>
-            <a href="{% url 'todolist:delete' list.id %}"><button class="btn btn-outline-dark" >Delete</button></a>
-            <a href="{% url 'todolist:status' list.id %}"><button class="btn btn-outline-dark">Undo</button></a>
-          {% else %}
-            <h6 class="card-text text-danger">Status: ON PROGRESS</h6>
-            <a href="{% url 'todolist:delete' list.id %}"><button class="btn btn-outline-dark">Delete</button></a>
-            <a href="{% url 'todolist:status' list.id %}"><button class="btn btn-outline-dark">Mark as Done</button></a>
-          {% endif %}
-        </div>
-      </div>
       
-    </tr>
-    {% endfor %}
-    
-    {% endif %}
-  </div>
-<br>
-</div>
-</div>
-</section>
-</body>
+  
 
 {% endblock content %}
+
